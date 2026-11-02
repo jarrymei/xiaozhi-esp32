@@ -227,6 +227,21 @@ private:
 
         // 使用 GPIO17 控制舵机，启动时回到中间位置
         static ServoController servo(GPIO_NUM_17);
+#if BREAD_COMPACT_USE_WAVESHARE_LCD && BREAD_COMPACT_USE_ROBOT_EYES
+        // 显式视觉入口：只控制屏幕表演，不把普通TTS当成音乐播放事件。
+        McpServer::GetInstance().AddTool(
+            "self.screen.set_singing_animation",
+            "开启或关闭屏幕上拿麦克风唱歌的动画。用户要求演示唱歌动画、拿麦克风表演时使用。"
+            "此工具只改变屏幕，不播放或停止歌曲，也不能证明歌曲正在播放。",
+            PropertyList({
+                Property("enabled", kPropertyTypeBoolean),
+                Property("duration_seconds", kPropertyTypeInteger, 15, 1, 600)
+            }),
+            [this](const PropertyList& properties) -> ReturnValue {
+                return static_cast<RobotEyeDisplay*>(display_)->SetSingingAnimation(
+                    properties["enabled"].value<bool>(), properties["duration_seconds"].value<int>());
+            });
+#endif
     }
 
 public:
@@ -263,6 +278,29 @@ public:
 
     virtual Display* GetDisplay() override {
         return display_;
+    }
+
+    void SetNetworkEventCallback(NetworkEventCallback callback) override {
+        // 仅转发本板联网显示阶段，应用原回调及其网络处理保持完整执行。
+        WifiBoard::SetNetworkEventCallback([this, callback = std::move(callback)](NetworkEvent event, const std::string& data) {
+#if BREAD_COMPACT_USE_WAVESHARE_LCD && BREAD_COMPACT_USE_ROBOT_EYES
+            switch (event) {
+                case NetworkEvent::Connected:
+                    static_cast<RobotEyeDisplay*>(display_)->SetNetworkConnecting(false);
+                    break;
+                case NetworkEvent::Scanning:
+                case NetworkEvent::Connecting:
+                case NetworkEvent::Disconnected:
+                case NetworkEvent::WifiConfigModeEnter:
+                case NetworkEvent::WifiConfigModeExit:
+                    static_cast<RobotEyeDisplay*>(display_)->SetNetworkConnecting(true);
+                    break;
+                default:
+                    break;
+            }
+#endif
+            if (callback) callback(event, data);
+        });
     }
 
     virtual Backlight* GetBacklight() override {
