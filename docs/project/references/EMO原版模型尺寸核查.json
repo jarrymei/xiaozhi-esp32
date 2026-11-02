@@ -1,0 +1,138 @@
+{
+  "commit": "184f32e354968001d18d6c4e7f21e2a79278a546",
+  "note": "STL本身没有单位；数值按该类模型通常使用的毫米解释，打印前须在切片软件确认。外包尺寸不是内腔、PCB尺寸或螺孔间距，不能单独证明兼容。",
+  "models": [
+    {
+      "file": "emo头部.stl",
+      "size_xyz_model_units": [
+        94.065,
+        66.727,
+        71.406
+      ],
+      "triangles": 39610,
+      "sha256": "34e4533394acc0a06fe74a2bbe13197d9249073760e2e39169323e5ea9495340",
+      "source": "https://raw.githubusercontent.com/maker-community/VerdureLab/184f32e354968001d18d6c4e7f21e2a79278a546/verdure-emo/emo头部.stl"
+    },
+    {
+      "file": "emo耳机右星星.stl",
+      "size_xyz_model_units": [
+        3.007,
+        19.488,
+        19.489
+      ],
+      "triangles": 474,
+      "sha256": "9d613c1739227fcc82a58f3a1f03898f155b57dc9229c9d386f95ad3a8d0fa73",
+      "source": "https://raw.githubusercontent.com/maker-community/VerdureLab/184f32e354968001d18d6c4e7f21e2a79278a546/verdure-emo/emo耳机右星星.stl"
+    },
+    {
+      "file": "emo耳机左星星.stl",
+      "size_xyz_model_units": [
+        3.007,
+        19.488,
+        19.488
+      ],
+      "triangles": 474,
+      "sha256": "5b186d769467318244006ff55ee1f681d2f1c092932f495b973735e4d25260f5",
+      "source": "https://raw.githubusercontent.com/maker-community/VerdureLab/184f32e354968001d18d6c4e7f21e2a79278a546/verdure-emo/emo耳机左星星.stl"
+    },
+    {
+      "file": "emo耳机无切割星星.stl",
+      "size_xyz_model_units": [
+        108.768,
+        36.672,
+        65.025
+      ],
+      "triangles": 11748,
+      "sha256": "258f9d8a2804966220b6b7032235d9181705565d9d2e4622d0d3b9b7cb57b41c",
+      "source": "https://raw.githubusercontent.com/maker-community/VerdureLab/184f32e354968001d18d6c4e7f21e2a79278a546/verdure-emo/emo耳机无切割星星.stl"
+    },
+    {
+      "file": "emo耳机无星星切割.stl",
+      "size_xyz_model_units": [
+        108.768,
+        36.374,
+        65.028
+      ],
+      "triangles": 11668,
+      "sha256": "1b4ceac9594e38e5dd3e8828d6285a035022712f2c25fa2432c7af27b8cb1fe0",
+      "source": "https://raw.githubusercontent.com/maker-community/VerdureLab/184f32e354968001d18d6c4e7f21e2a79278a546/verdure-emo/emo耳机无星星切割.stl"
+    },
+    {
+      "file": "usb小板固定板.stl",
+      "size_xyz_model_units": [
+        24.0,
+        6.0,
+        2.0
+      ],
+      "triangles": 308,
+      "sha256": "a8f85fea632907800bf4eb5854281ecbe53132a18c7c894e22ac927207ca7aab",
+      "source": "https://raw.githubusercontent.com/maker-community/VerdureLab/184f32e354968001d18d6c4e7f21e2a79278a546/verdure-emo/usb小板固定板.stl"
+    },
+    {
+      "file": "右脚.stl",
+      "size_xyz_model_units": [
+        42.0,
+        64.0,
+        27.0
+      ],
+      "triangles": 2968,
+      "sha256": "4aa0833ebb98f71b82606e5ba233a8980d0647318182e9bb5aecdc329005718b",
+      "source": "https://raw.githubusercontent.com/maker-community/VerdureLab/184f32e354968001d18d6c4e7f21e2a79278a546/verdure-emo/右脚.stl"
+    },
+    {
+      "file": "右腿.stl",
+      "size_xyz_model_units": [
+        17.0,
+        41.5,
+        42.0
+      ],
+      "triangles": 5920,
+      "sha256": "36048d22d2d1a536261c7f71e769b6c0f0ffe9a9cb5f71ea27f18abdfb8f7453",
+      "source": "https://raw.githubusercontent.com/maker-community/VerdureLab/184f32e354968001d18d6c4e7f21e2a79278a546/verdure-emo/右腿.stl"
+    },
+    {
+      "file": "合体面板.stl",
+      "size_xyz_model_units": [
+        63.725,
+        4.249,
+        55.821
+      ],
+      "triangles": 2580,
+      "sha256": "b3f0c0974d085b873ba7d16b7c4b88f772cd03f40e9d97f38f7d8001da9e2a98",
+      "source": "https://raw.githubusercontent.com/maker-community/VerdureLab/184f32e354968001d18d6c4e7f21e2a79278a546/verdure-emo/合体面板.stl"
+    },
+    {
+      "file": "后盖.stl",
+      "size_xyz_model_units": [
+        62.949,
+        17.622,
+        55.11
+      ],
+      "triangles": 15336,
+      "sha256": "162b7cff29093f49df1a3cd3c073da728c05e9a975dca02fd8e058c26d9ff7c4",
+      "source": "https://raw.githubusercontent.com/maker-community/VerdureLab/184f32e354968001d18d6c4e7f21e2a79278a546/verdure-emo/后盖.stl"
+    },
+    {
+      "file": "左脚.stl",
+      "size_xyz_model_units": [
+        42.0,
+        64.0,
+        27.0
+      ],
+      "triangles": 2968,
+      "sha256": "b2c25ae9adfd6b16499dcda16e76efca684e80eeefab8be5256b8f5f5946ca33",
+      "source": "https://raw.githubusercontent.com/maker-community/VerdureLab/184f32e354968001d18d6c4e7f21e2a79278a546/verdure-emo/左脚.stl"
+    },
+    {
+      "file": "左腿.stl",
+      "size_xyz_model_units": [
+        17.0,
+        41.5,
+        42.0
+      ],
+      "triangles": 5952,
+      "sha256": "3a8092e8b387eef6752b2f5c9d3f0919a6cecfeeb837b549b094ec8bebe019b2",
+      "source": "https://raw.githubusercontent.com/maker-community/VerdureLab/184f32e354968001d18d6c4e7f21e2a79278a546/verdure-emo/左腿.stl"
+    }
+  ]
+}

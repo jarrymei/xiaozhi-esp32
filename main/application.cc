@@ -563,6 +563,12 @@ void Application::InitializeProtocol() {
                 });
             }
         } else if (strcmp(type->valuestring, "mcp") == 0) {
+            // 学习调试：记录云端下发的完整MCP消息，包括外层类型和载荷
+            char* mcp_message = cJSON_PrintUnformatted(root);
+            if (mcp_message != nullptr) {
+                ESP_LOGI(TAG, "[MCP RX] %s", mcp_message);
+                cJSON_free(mcp_message);
+            }
             auto payload = cJSON_GetObjectItem(root, "payload");
             if (cJSON_IsObject(payload)) {
                 McpServer::GetInstance().ParseMessage(payload);
@@ -860,6 +866,8 @@ void Application::HandleStateChangedEvent() {
     auto display = board.GetDisplay();
     auto led = board.GetLed();
     led->OnStateChanged();
+    // 将实际设备状态传给屏幕，避免通过状态文字判断动画。
+    display->SetInteractionState(new_state);
     
     switch (new_state) {
         case kDeviceStateUnknown:

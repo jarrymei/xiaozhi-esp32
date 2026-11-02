@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="760" viewBox="0 0 1100 760">
+<title>原创桌面机器人A0结构占位草图</title>
+<desc>四舵机双足的正视与侧视示意，显示竖直腿轴、前后脚轴和开放式机身。全部整机尺寸为暂定设计变量。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526079"/></marker></defs>
+<rect width="1100" height="760" fill="#f7f9fc"/>
+<g font-family="Microsoft YaHei, sans-serif" fill="#20314b">
+<text x="44" y="48" font-size="26" font-weight="bold">A0 · 开放式四舵机双足</text>
+<text x="44" y="79" font-size="16">机构概念与占位布局｜非加工图｜暂定尺寸单位：mm｜未验证承重和步行稳定性</text>
+<text x="130" y="128" font-size="20">正视 · 面向机器人</text><text x="685" y="128" font-size="20">侧视 · 前方在左</text>
+<rect x="120" y="175" width="344" height="240" rx="18" fill="#e2eaf4" stroke="#526079" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="212" y="190" width="156" height="126" rx="9" fill="#26384d"/>
+<rect x="225" y="205" width="130" height="105" rx="12" fill="#86ddd2"/>
+<ellipse cx="259" cy="255" rx="11" ry="18" fill="#20314b"/><ellipse cx="319" cy="255" rx="11" ry="18" fill="#20314b"/>
+<text x="202" y="344" font-size="16">彩屏脸 · 可拆面框</text>
+<rect x="144" y="356" width="296" height="36" fill="#b7c9b1"/><text x="177" y="380" font-size="16">开发板与音频模块平台</text>
+<rect x="168" y="394" width="48" height="76" rx="5" fill="#e7ad64" stroke="#925a24"/>
+<rect x="368" y="394" width="48" height="76" rx="5" fill="#e7ad64" stroke="#925a24"/>
+<path d="M192 420 V494 H172 V536 M392 420 V494 H412 V536" fill="none" stroke="#587698" stroke-width="14"/>
+<g stroke="#e16a48" stroke-width="3" stroke-dasharray="6 5"><path d="M192 370 V490 M392 370 V490"/></g>
+<rect x="146" y="520" width="52" height="72" rx="4" fill="#e7ad64" stroke="#925a24"/><rect x="386" y="520" width="52" height="72" rx="4" fill="#e7ad64" stroke="#925a24"/>
+<circle cx="172" cy="563" r="12" fill="#fff" stroke="#e16a48" stroke-width="3"/><circle cx="412" cy="563" r="12" fill="#fff" stroke="#e16a48" stroke-width="3"/>
+<path d="M172 563 V624 M412 563 V624" stroke="#587698" stroke-width="10"/>
+<rect x="84" y="624" width="176" height="32" rx="6" fill="#83a8cf" stroke="#526079"/><rect x="324" y="624" width="176" height="32" rx="6" fill="#83a8cf" stroke="#526079"/>
+<text x="50" y="489" font-size="15">腿轴：竖直转动</text><text x="275" y="603" font-size="15">脚轴：前后方向 ⊙</text>
+<g stroke="#526079" marker-start="url(#arrow)" marker-end="url(#arrow)"><path d="M120 157 H464"/><path d="M84 685 H500"/></g>
+<text x="245" y="149" font-size="15">机身宽86</text><text x="220" y="711" font-size="15">中立总宽104</text>
+<rect x="692" y="175" width="240" height="240" rx="14" fill="#e2eaf4" stroke="#526079" stroke-width="2" stroke-dasharray="8 6"/>
+<rect x="678" y="194" width="18" height="156" rx="4" fill="#26384d"/>
+<rect x="712" y="358" width="194" height="34" fill="#b7c9b1"/><text x="728" y="339" font-size="15">重件靠下、后部出线</text>
+<rect x="780" y="394" width="48" height="76" rx="4" fill="#e7ad64" stroke="#925a24"/>
+<path d="M804 445 V563" stroke="#587698" stroke-width="14"/>
+<rect x="747" y="520" width="114" height="48" rx="4" fill="#e7ad64" stroke="#925a24"/>
+<path d="M725 544 H883" stroke="#e16a48" stroke-width="3" stroke-dasharray="6 5"/>
+<path d="M737 544 V624" stroke="#587698" stroke-width="10"/>
+<rect x="676" y="624" width="256" height="32" rx="6" fill="#83a8cf" stroke="#526079"/>
+<g stroke="#526079" marker-start="url(#arrow)" marker-end="url(#arrow)"><path d="M985 175 V656"/><path d="M676 685 H932"/></g>
+<text x="996" y="406" font-size="15">高约122</text><text x="760" y="711" font-size="15">脚长64</text>
+<text x="44" y="746" font-size="14">橙：舵机占位　蓝：腿脚连接件　红虚线/圆：关节轴　虚线机身：布局边界；孔位、摇臂及被动支撑待细化</text>
+</g></svg>

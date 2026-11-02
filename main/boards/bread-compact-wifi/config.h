@@ -34,6 +34,35 @@
 #define VOLUME_UP_BUTTON_GPIO   GPIO_NUM_40
 #define VOLUME_DOWN_BUTTON_GPIO GPIO_NUM_39
 
+// 当前实验使用微雪1.69寸无触摸彩屏；改为0可恢复原OLED初始化路径。
+#define BREAD_COMPACT_USE_WAVESHARE_LCD 1
+// 改为0恢复原来的小智表情界面，不影响LCD接线和初始化。
+#define BREAD_COMPACT_USE_ROBOT_EYES 1
+
+#if BREAD_COMPACT_USE_WAVESHARE_LCD
+// 引脚按屏幕接口名称连接；VCC接3V3，GND接开发板GND。
+#define DISPLAY_MOSI_PIN GPIO_NUM_10
+#define DISPLAY_CLK_PIN GPIO_NUM_9
+#define DISPLAY_CS_PIN GPIO_NUM_12
+#define DISPLAY_DC_PIN GPIO_NUM_11
+#define DISPLAY_RST_PIN GPIO_NUM_21
+#define DISPLAY_BACKLIGHT_PIN GPIO_NUM_1
+
+// 先使用240×280竖屏；控制器的320行显存中，可见区域从第20行开始。
+#define DISPLAY_WIDTH 240
+#define DISPLAY_HEIGHT 280
+#define DISPLAY_OFFSET_X 0
+#define DISPLAY_OFFSET_Y 20
+#define DISPLAY_MIRROR_X false
+#define DISPLAY_MIRROR_Y false
+#define DISPLAY_SWAP_XY false
+#define DISPLAY_INVERT_COLOR true
+#define DISPLAY_RGB_ORDER LCD_RGB_ELEMENT_ORDER_RGB
+// 杜邦线首次调试先降到10MHz，稳定后再考虑提高速度。
+#define DISPLAY_SPI_CLOCK_HZ (10 * 1000 * 1000)
+// 每次启动显示5秒红绿蓝测试条；验证完成后可改为0关闭自检画面。
+#define DISPLAY_STARTUP_TEST_MS 0
+#else
 #define DISPLAY_SDA_PIN GPIO_NUM_41
 #define DISPLAY_SCL_PIN GPIO_NUM_42
 #define DISPLAY_WIDTH   128
@@ -51,6 +80,7 @@
 
 #define DISPLAY_MIRROR_X true
 #define DISPLAY_MIRROR_Y true
+#endif
 
 
 // A MCP Test: Control a lamp

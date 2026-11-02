@@ -509,6 +509,14 @@ void McpServer::GetToolsList(int id, const std::string& cursor, bool list_user_o
 }
 
 void McpServer::DoToolCall(int id, const std::string& tool_name, const cJSON* tool_arguments) {
+    // 记录请求编号、工具名称及原始参数，便于与收到的MCP消息对应
+    char* arguments_json = tool_arguments != nullptr
+        ? cJSON_PrintUnformatted(tool_arguments) : nullptr;
+    ESP_LOGI(TAG, "[TOOL CALL] id=%d name=%s arguments=%s", id,
+             tool_name.c_str(), arguments_json != nullptr ? arguments_json : "{}");
+    if (arguments_json != nullptr) {
+        cJSON_free(arguments_json);
+    }
     auto tool_iter = std::find_if(tools_.begin(), tools_.end(), 
                                  [&tool_name](const McpTool* tool) { 
                                      return tool->name() == tool_name; 
@@ -554,7 +562,11 @@ void McpServer::DoToolCall(int id, const std::string& tool_name, const cJSON* to
     auto& app = Application::GetInstance();
     app.Schedule([this, id, tool_iter, arguments = std::move(arguments)]() {
         try {
-            ReplyResult(id, (*tool_iter)->Call(arguments));
+            ESP_LOGI(TAG, "[TOOL EXEC] id=%d name=%s", id, (*tool_iter)->name().c_str());
+            const auto result = (*tool_iter)->Call(arguments);
+            ESP_LOGI(TAG, "[TOOL RESULT] id=%d name=%s result=%s", id,
+                     (*tool_iter)->name().c_str(), result.c_str());
+            ReplyResult(id, result);
         } catch (const std::exception& e) {
             ESP_LOGE(TAG, "tools/call: %s", e.what());
             ReplyError(id, e.what());

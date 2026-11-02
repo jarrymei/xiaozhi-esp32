@@ -2,6 +2,7 @@
 #define DISPLAY_H
 
 #include "emoji_collection.h"
+#include "device_state.h"
 
 #ifndef CONFIG_USE_EMOTE_MESSAGE_STYLE
 #define HAVE_LVGL 1
@@ -34,6 +35,8 @@ public:
     virtual void ShowNotification(const char* notification, int duration_ms = 3000);
     virtual void ShowNotification(const std::string &notification, int duration_ms = 3000);
     virtual void SetEmotion(const char* emotion);
+    // 默认不处理交互状态，只有需要状态动画的显示器覆盖此接口。
+    virtual void SetInteractionState(DeviceState state) {}
     virtual void SetChatMessage(const char* role, const char* content);
     virtual void ClearChatMessages();
     virtual void SetTheme(Theme* theme);
