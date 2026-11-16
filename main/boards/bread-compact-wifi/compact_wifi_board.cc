@@ -13,7 +13,18 @@
 #include "display/oled_display.h"
 #endif
 #include "mcp_server.h"
+#if BREAD_COMPACT_ENABLE_FOUR_SERVO_SELF_TEST
+#include "four_servo_self_test.h"
+#endif
+#if BREAD_COMPACT_ENABLE_SERVO17_SELF_TEST
+#include "servo17_self_test.h"
+#endif
+#if BREAD_COMPACT_ENABLE_FOUR_SERVOS
+#include "four_servo_controller.h"
+#endif
+#if BREAD_COMPACT_ENABLE_LEGACY_LAMP
 #include "lamp_controller.h"
+#endif
 #include "led/single_led.h"
 #include "assets/lang_config.h"
 
@@ -22,7 +33,9 @@
 #include <esp_lcd_panel_ops.h>
 #include <esp_lcd_panel_vendor.h>
 
+#if BREAD_COMPACT_ENABLE_LEGACY_SERVO
 #include "servo_controller.h"
+#endif
 
 #ifdef SH1106
 #include <esp_lcd_panel_sh1106.h>
@@ -221,12 +234,26 @@ private:
 
     // 物联网初始化，逐步迁移到 MCP 协议
     void InitializeTools() {
+#if BREAD_COMPACT_ENABLE_FOUR_SERVO_SELF_TEST
+        // 临时开机四路一起测试，不注册舵机MCP工具。
+        static FourServoSelfTest four_servo_test;
+#endif
+#if BREAD_COMPACT_ENABLE_SERVO17_SELF_TEST
+        // 临时本地自检仅驱动GPIO17，启动5秒后自动执行一次，不注册动作MCP。
+        static Servo17SelfTest servo17_test;
+#endif
+#if BREAD_COMPACT_ENABLE_FOUR_SERVOS
+        // 四路仅初始化为低电平，等待用户逐路测试，不执行启动动作。
+        static FourServoController four_servos;
+#endif
+#if BREAD_COMPACT_ENABLE_LEGACY_LAMP
+        // 旧LED实验入口：关闭开关时不初始化GPIO/PWM，也不注册其MCP工具。
         static LampController lamp(LAMP_GPIO);
-        // 学习测试：启动时将 LED 设置为 10% 亮度
-        // lamp.SetBrightness(10);
-
-        // 使用 GPIO17 控制舵机，启动时回到中间位置
-        static ServoController servo(GPIO_NUM_17);
+#endif
+#if BREAD_COMPACT_ENABLE_LEGACY_SERVO
+        // 旧单舵机实验入口：开启后启动会回中，恢复前必须核对接线。
+        static ServoController servo(LEGACY_SERVO_GPIO);
+#endif
 #if BREAD_COMPACT_USE_WAVESHARE_LCD && BREAD_COMPACT_USE_ROBOT_EYES
         // 显式视觉入口：只控制屏幕表演，不把普通TTS当成音乐播放事件。
         McpServer::GetInstance().AddTool(
@@ -305,7 +332,7 @@ public:
 
     virtual Backlight* GetBacklight() override {
 #if BREAD_COMPACT_USE_WAVESHARE_LCD
-        // 公共背光类使用定时器0、通道0，不占LED的2和舵机的3。
+        // 公共背光类使用定时器0、通道0，后续四舵机PWM须避开这些资源。
         static PwmBacklight backlight(DISPLAY_BACKLIGHT_PIN, false);
         return &backlight;
 #else
